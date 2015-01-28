@@ -1,0 +1,66 @@
+<html>
+<head>
+	<title>JS practice</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	<script>
+	var Person = {
+		_name : "tttt",
+		_isStudent : true,
+		named: function(name){
+			this._name = name;
+			alert("hello, " + this._name);
+		},
+		isStudent : function(){
+			if(this._isStudent)
+				alert("yes");
+			else
+				alert("No");
+		}
+	}
+	var me = Object.create(Person);
+
+	
+	window.onload = function(){
+		var image = new Image();
+		image.crossOrigin = "anonymous";
+		image.src = 'https://dl.dropboxusercontent.com/u/139992952/stackoverflow/colorhouse.png';
+
+		image.onload = function(){
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			ctx.drawImage(image, 0, 0);
+			imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+			for(var i=0;i<imgData.data.length;i+=4){
+				imgData.data[i]=255-imgData.data[i];
+				imgData.data[i+1]=255-imgData.data[i+1];
+				imgData.data[i+2]=255-imgData.data[i+2];
+				imgData.data[i+3]=255/2;
+			}
+			ctx.putImageData(imgData, 0, 0);
+		}
+	}
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<h1>aaaaaaa</h1>
+
+	<canvas id="canvas" width="512" height="512">
+
+
+	<h1>bbbbbb</h1>
+	
+	<script>
+	$("h1").mouseenter(function(e){
+		$(this).css("color", "red");
+	}).mouseleave(function(e){
+		$(this).css("color", "black");
+	});
+	</script>
+</body>
+</html>
